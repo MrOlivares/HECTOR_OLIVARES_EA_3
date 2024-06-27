@@ -1,0 +1,94 @@
+#OPCION 3 NOMBRE MIO y la fecha del día
+
+#Muestra escenario al usuario
+try:
+    import datetime
+    fecha = datetime.date.today()
+    def mostrar_escenario(escenario):
+        print("\t\t\t ESCENARIO\n")
+        for i in range(0, 50, 10):
+            fila = ""
+            for j in range(10):
+                fila += f"{escenario[i + j]}\t"
+            print(fila)
+        print("\n")
+
+    def salir():
+        print("El programa se cerro")
+        print("Gracias por utilizar el sistema de ventas!.\n")
+        print(f"Hector Olivares{fecha}")
+        
+#listas
+    lista_run = []
+    ganancias_totales = []
+
+#Funcion para compra de entradas, asigna valores a los asientos de forma bruta
+    def comprar_entradas(escenario):
+        precios = {1: 100_000, 2: 100_000, 3: 100_000, 4: 100_000, 5: 100_000,
+                6: 100_000, 7: 100_000, 8: 100_000, 9: 100_000, 10: 100_000,
+                11: 100_000, 12: 100_000, 13: 100_000, 14: 100_000, 15: 100_000,
+                16: 100_000, 17: 100_000, 18: 100_000, 19: 100_000, 20: 100_000,
+                21: 50_000, 22: 50_000, 23: 50_000, 24: 50_000, 25: 50_000,
+                26: 50_000, 27: 50_000, 28: 50_000, 29: 50_000, 30: 50_000,
+                31: 10_000, 32: 10_000, 33: 10_000, 34: 10_000, 35: 10_000,
+                36: 10_000, 37: 10_000, 38: 10_000, 39: 10_000, 40: 10_000,
+                41: 10_000, 42: 10_000, 43: 10_000, 44: 10_000, 45: 10_000,
+                46: 10_000, 47: 10_000, 48: 10_000, 49: 10_000, 50: 10_000}
+
+    
+#Compra de entradas
+        cantidad = int(input("Ingrese la cantidad de entradas a comprar (1 o 2): "))
+        while cantidad < 1 or cantidad > 2:
+            print("Cantidad invalida")
+            cantidad = int(input("Reingrese el número de entradas (1 o 2): "))
+
+#Selección de asientos    
+        ganancias = 0
+        for _ in range(cantidad):
+            mostrar_escenario(escenario)
+            asiento = int(input("Seleccione el número del asiento que desea comprar: "))
+            while asiento < 1 or asiento > 50 or escenario[asiento - 1] == 'X':
+                print("No disponible")
+                asiento = int(input("Seleccione un nuevo asiento: "))
+            
+            escenario[asiento - 1] = 'X'
+            precio = precios[asiento]    
+            run = int(input(f"Ingrese el RUN para el asiento {asiento} (sin guión, puntos ni dígito verificador)\nEn caso de terminar en K ingrese 0: "))
+            if run <= 0:
+                print("RUN invalido")
+                return
+            print(f"Se ha asignado el asiento {asiento} con valor ${precio} al RUN {run}.\n")
+            lista_run.append(run)
+            ganancias = (ganancias+precio)
+            ganancias_totales.append(ganancias)
+
+#Crea la matriz
+    escenario = []
+    for i in range(1, 51):
+        escenario.append(str(i))
+
+    while True:
+            print("\n\tSanchez Producciones\n")
+            print("Evento de \"MICHAEL JACKSON\"")
+            print("1. Comprar entradas")
+            print("2. Mostrar ubicaciones disponibles")
+            print("3. Ver listado de asistentes")
+            print("4. Mostrar ganancias totales")
+            print("5. Salir")
+            opcion = int(input("Seleccione una opción: "))
+            match opcion:
+                case 1:
+                    comprar_entradas(escenario)
+                case 2:
+                    mostrar_escenario(escenario)
+                case 3:
+                    print(lista_run)
+                case 4:
+                    print("Las ganancias totales generadas son de", ganancias_totales)
+                case 5:
+                    salir()
+                    break
+                case _:
+                    print("Opción inválida. Por favor, seleccione nuevamente.\n")
+except:
+    print("Ha ocurrido un error, el programa se cerrara")
