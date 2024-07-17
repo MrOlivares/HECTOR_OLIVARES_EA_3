@@ -87,6 +87,31 @@ try:
                     print("Las ganancias totales generadas son de", ganancias_totales)
                 case 5:
                     salir()
+
+
+### len(lista) Longitud de la lista
+### del lista[*] elimina elemento en posición *
+### lista.append() elemento al final
+### lista.insert(posicion, valor)
+### for i in range(length // 2): (Voltear la lista)
+###    my_list[i], my_list[length - i - 1] = my_list[length - i - 1], my_list[i]
+###my_list = []
+###swapped = True
+###num = int(input("¿Cuántos elementos deseas ordenar?: "))
+
+###for i in range(num):
+###    val = float(input("Ingresa un elemento de la lista: "))
+# my_list.append(val)
+
+# while swapped:
+#     swapped = False
+#     for i in range(len(my_list) - 1):
+#         if my_list[i] > my_list[i + 1]:
+#             swapped = True
+#             my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
+
+#     print("\nOrdenada:")
+#     print(my_list)
                     break
                 case _:
                     print("Opción inválida. Por favor, seleccione nuevamente.\n")
